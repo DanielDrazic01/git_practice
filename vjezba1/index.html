@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Formular</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				width: 100%;
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			form {
+				width: 400px;
+				height: auto;
+				background-color: rgb(236, 236, 236);
+				padding: 1rem;
+				border-radius: 10px;
+				box-shadow: 0 0 5px 5px lightgray;
+			}
+			.form--title {
+				background-color: #333;
+				color: white;
+				padding: 2rem 1rem;
+				text-align: center;
+				margin-bottom: 1rem;
+			}
+
+			.form--title::first-line {
+				color: rgb(243, 161, 38);
+			}
+
+			form input {
+				width: 100%;
+				font-size: 1rem;
+				margin-bottom: 10px;
+				padding: 0.5rem;
+				border: 1px solid gray;
+			}
+
+			form textarea {
+				width: 100%;
+				padding: 0.5rem;
+			}
+
+			form button {
+				display: block;
+				margin: 0 auto;
+				padding: 0.5rem 1rem;
+				background-color: rgb(243, 161, 38);
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				font-weight: bold;
+			}
+
+			form button:hover {
+				background-color: rgb(253, 179, 67);
+			}
+			form button:active {
+				transform: scale(0.98);
+			}
+			.red {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="">
+			<h4 class="form--title">
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae illum
+			</h4>
+			<label for="ime"
+				>Ime <span class="red">*</span><br /><input
+					required
+					autocomplete="off"
+					id="ime"
+					type="text"
+			/></label>
+			<br />
+			<label for="email"
+				>Email <span class="red">*</span><br /><input
+					required
+					autocomplete="off"
+					id="email"
+					type="email"
+			/></label>
+			<br />
+			<label for="predmet"
+				>Predmet <span class="red">*</span><br /><input
+					required
+					autocomplete="off"
+					id="predmet"
+					type="text"
+			/></label>
+			<br />
+			<label for="sadrzaj"
+				>Sadržaj <span class="red">*</span><br /><textarea
+					name="sadrzaj"
+					id="sadrzaj"
+					cols="30"
+					rows="10"
+				></textarea>
+			</label>
+
+			<button type="submit">Pošalji</button>
+		</form>
+
+		<script>
+			$(document).ready(() => {
+				$("input, textarea").focusin((e) => {
+					$("input, textarea").css("background", "white");
+					$(e.target).css("background", "lightgray");
+				});
+
+				$("form").submit((e) => {
+					e.preventDefault();
+				});
+				$("input, textarea").focusout((e) => {
+					$("input, textarea").css("background", "white");
+				});
+			});
+		</script>
+	</body>
+</html>
