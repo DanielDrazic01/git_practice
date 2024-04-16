@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Fade In/Out & Slide Infinite Loop</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<style>
+			.container {
+				display: flex;
+				justify-items: space-around;
+				width: 50%;
+				margin: 0 auto;
+			}
+			#element {
+				width: 200px;
+				height: 200px;
+				background-color: lightblue;
+				display: none;
+			}
+			#element2 {
+				width: 200px;
+				height: 200px;
+				background-color: lightgray;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="startButton">Fade In/Out</button>
+		<button id="startButton2">Slide Loop</button>
+		<div class="container">
+			<p id="element">
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium
+				adipisci unde voluptatum quos tenetur! Illum quod impedit expedita
+				provident illo!
+			</p>
+			<p id="element2">
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium
+				adipisci unde voluptatum quos tenetur! Illum quod impedit expedita
+				provident illo!
+			</p>
+		</div>
+
+		<script>
+			$(document).ready(function () {
+				$("#startButton").click(function () {
+					let element = $("#element");
+
+					function fadeInOutLoop() {
+						element.fadeIn(1000).delay(1000).fadeOut(1000, slideInOutLoop);
+					}
+
+					function slideInOutLoop() {
+						element.slideDown(1000).delay(1000).slideUp(1000, fadeInOutLoop);
+					}
+					fadeInOutLoop();
+				});
+				$("#startButton2").click(function () {
+					let element = $("#element2");
+
+					function slideInOutLoop() {
+						element.slideDown(1000).delay(1000).slideUp(1000, slideInOutLoop);
+					}
+					slideInOutLoop();
+				});
+			});
+		</script>
+	</body>
+</html>
